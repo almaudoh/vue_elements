@@ -1,0 +1,15 @@
+{# This is a special form of the component that uses a script tag in the slot to pass in JSON values #}
+{{ attach_library('vue_elements/table') }}
+<drupal-table>
+  <script type="application/json" slot="initializer">
+    {
+      "attributes": {{ attributes.toArray()|json_encode|raw }},
+      "caption": {{ caption|json_encode }},
+      "colgroups": {{ colgroups|json_encode|raw }},
+      "header": {{ header|json_encode|raw }},
+      "rows": {{ rows|json_encode|raw }},
+      "header_columns": {{ header_columns|raw }},
+      "footer": {{ footer|json_encode|raw }}
+    }
+  </script>
+</drupal-table>

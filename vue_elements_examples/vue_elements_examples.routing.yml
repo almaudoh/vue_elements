@@ -1,0 +1,14 @@
+vue_elements_examples.index:
+  path: /vue_elements/examples
+  defaults:
+    _controller: \Drupal\vue_elements_examples\ExampleController::index
+  requirements:
+    _access: 'TRUE'
+
+
+vue_elements_examples.table:
+  path: /vue_elements/examples/table
+  defaults:
+    _controller: \Drupal\vue_elements_examples\ExampleController::table
+  requirements:
+    _access: 'TRUE'

@@ -1,0 +1,7 @@
+name: Vue Elements
+type: module
+description: Provides Vue components for all currently existing Drupal core render elements.
+core: 8.x
+package: Vue
+configure: vue_elements.settings
+version: 8.x-1.0-dev

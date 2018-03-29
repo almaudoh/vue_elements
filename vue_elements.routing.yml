@@ -1,0 +1,7 @@
+vue_elements.settings:
+  path: /admin/config/development/vue_elements
+  defaults:
+    _form: Drupal\vue_elements\Form\SettingsForm
+    _title: Vue.js
+  requirements:
+    _permission: 'administer vue elements configuration'

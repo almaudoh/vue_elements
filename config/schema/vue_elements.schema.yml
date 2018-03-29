@@ -1,0 +1,6 @@
+type: config_object
+mapping:
+  globally_overridden:
+    type: sequence
+    name: Globally overridden
+    description: Globally overridden theme hooks that render using Vue by default

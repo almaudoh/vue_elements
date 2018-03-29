@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * This file provides hooks for the Vue Elements module.
+ */
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function vue_elements_theme_registry_alter(&$theme_registry) {
+  foreach ($theme_registry as $hook => $data) {
+    // Add a variable to every hook to allow vue theming overrides.
+    if (isset($data['variables'])) {
+      $theme_registry[$hook]['variables']['vue_render'] = FALSE;
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ */
+function vue_elements_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+  // Add a hook that renders Vue templates to the template suggestions.
+  $globally_overridden = \Drupal::config('vue_elements.settings')->get('globally_overridden');
+  if (!empty($variables['vue_render']) || in_array($hook, $globally_overridden, TRUE)) {
+    $suggestions[] = $hook . '__vue';
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function vue_elements_theme($existing, $type, $theme, $path) {
+  // Add a new theme hook for each existing one.
+  $items = [];
+  $hooks = ['table'];
+  foreach ($hooks as $hook) {
+    $items[$hook . '__vue'] = [
+      'template' => $hook . '--vue',
+      'base hook' => $hook,
+    ];
+  }
+  return $items;
+}

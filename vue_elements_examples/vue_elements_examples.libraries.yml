@@ -1,0 +1,11 @@
+IndexApp:
+  js:
+    js/index.js: {}
+  dependencies:
+    - vue_elements/table
+
+TableApp:
+  js:
+    js/TableApp.js: {}
+  dependencies:
+    - vue_elements/table
